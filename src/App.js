@@ -7,17 +7,43 @@ import PlayerForm from "./PlayerForm.js";
 
 function App() {
   const [players, setPlayers] = useState([]);
-  console.log(players);
 
   function createPlayer(newPlayer) {
     setPlayers([...players, newPlayer]);
   }
 
+  function increaseScore(index) {
+    const currentPlayer = players[index];
+    setPlayers([
+      ...players.slice(0, index),
+      { ...currentPlayer, score: currentPlayer.score + 1 },
+      ...players.slice(index + 1),
+    ]);
+  }
+
+  function decreaseScore(index) {
+    const currentPlayer = players[index];
+    setPlayers([
+      ...players.slice(0, index),
+      { ...currentPlayer, score: currentPlayer.score - 1 },
+      ...players.slice(index + 1),
+    ]);
+  }
+
   return (
     <div className="App">
       <Heading headtext="Scorekeeper Version A" />
-      <Player text="John Doe" score={20} />
-      <Player text="Dorian Jones" score={30} />
+      <h2>Players:</h2>
+      {players.map((player, index) => (
+        <Player
+          index={index}
+          key={player.name}
+          name={player.name}
+          score={player.score}
+          onAddScore={increaseScore}
+          onSubtractScore={decreaseScore}
+        />
+      ))}
       <Button text="Reset scores" />
       <Button text="New game" />
 
