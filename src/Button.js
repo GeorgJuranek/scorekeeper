@@ -1,3 +1,18 @@
-export default function Button({ text }) {
-  return <button>{text}</button>;
+import styled from "styled-components";
+
+export default function Button({ text, onButtonFunction, buttonType }) {
+  console.log({ text });
+  return (
+    <ButtonStyle buttonType={buttonType} onClick={onButtonFunction}>
+      {text}
+    </ButtonStyle>
+  );
 }
+
+const ButtonStyle = styled.button`
+  width: 4rem;
+  height: 3rem;
+  margin: 1rem;
+  background-color: ${({ buttonType }) =>
+    buttonType === "reset" ? "blue" : "red"};
+`;
