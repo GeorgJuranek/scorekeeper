@@ -1,5 +1,6 @@
 import "./Player.css";
-import "./Button.css";
+import styled from "styled-components";
+//import "./Button.css";
 
 export default function Player({
   index,
@@ -22,7 +23,7 @@ export default function Player({
           {" "}
           -{" "}
         </button>
-        <span className="Button__score-count">{score}</span>
+        <ScoreDisplay score={score}>{score}</ScoreDisplay>
         <button
           onClick={() => onAddScore(index)}
           className="Button__change-score"
@@ -34,3 +35,9 @@ export default function Player({
     </ul>
   );
 }
+
+const ScoreDisplay = styled.span`
+  padding: 1rem;
+  color: ${({ score }) => score < 0 && "darkred"};
+`;
+//font-size: ${({ score }) => score > 0 && 13px+score)};

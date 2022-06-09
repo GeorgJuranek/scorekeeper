@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import Button from "./Button.js";
+import Button from "./Button/Button.js";
 import Player from "./Player.js";
 import Heading from "./Heading.js";
 import PlayerForm from "./PlayerForm.js";
