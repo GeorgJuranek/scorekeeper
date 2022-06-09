@@ -13,6 +13,8 @@ const ButtonStyle = styled.button`
   width: 4rem;
   height: 3rem;
   margin: 1rem;
+  border-radius: 20%;
+  color: white;
   background-color: ${({ buttonType }) =>
     buttonType === "reset" ? "blue" : "red"};
 `;
